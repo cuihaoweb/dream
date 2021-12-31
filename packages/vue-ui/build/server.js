@@ -2,15 +2,31 @@ const fastify = require("fastify")();
 const webpack = require("webpack");
 const devMiddleware = require("webpack-dev-middleware");
 const webpackConfig = require("./webpack.dev");
+const { createFsFromVolume, Volume } = require('memfs');
+
+
+const fs = createFsFromVolume(new Volume());
 
 
 const compiler = webpack(webpackConfig);
-const { publicPath } = webpackConfig.output;
+compiler.outputFileSystem = fs;
+console.log(compiler);
 
-const run = async () => {
-    await fastify.register(require("fastify-express"));
-    await fastify.use(devMiddleware(compiler, { publicPath }));
-    await fastify.listen(3001);
-};
+compiler.run((err, stats) => { // [Stats Object](#stats-object)
+    // ...
+    // console.log(stats.entrypoints)
+    const content = fs.readFileSync(compiler.outputPath+'/index.html');
+    console.log(content.toString());
+    compiler.close((closeErr) => {
+        // ...
+    });
+});
+// const { publicPath } = webpackConfig.output;
 
-run();
+// const run = async () => {
+//     await fastify.register(require("fastify-express"));
+//     await fastify.use(devMiddleware(compiler, { publicPath }));
+//     await fastify.listen(3001);
+// };
+
+// run();
