@@ -3,6 +3,7 @@
     "workspaces": [
         "packages/vue-ui",
         "packages/react-ui",
+        "packages/vue-cli",
         "packages/tools"
     ],
     "scripts": {
