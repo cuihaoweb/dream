@@ -1,0 +1,6 @@
+# 第三方依赖包
+node_modules
+
+
+# ide
+.DS_Store
