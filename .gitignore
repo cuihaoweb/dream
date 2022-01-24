@@ -4,3 +4,7 @@ node_modules
 
 # ide
 .DS_Store
+
+
+# log
+.log

@@ -1,10 +1,12 @@
 {
     "private": true,
+    "type": "module",
+    "engines": {
+        "node": ">=14",
+        "pnpm": ">=6"
+    },
     "workspaces": [
-        "packages/vue-ui",
-        "packages/react-ui",
-        "packages/vue-cli",
-        "packages/tools"
+        "packages/*"
     ],
     "scripts": {
         "server": "lerna run server"
