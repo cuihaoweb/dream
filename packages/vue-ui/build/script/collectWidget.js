@@ -17,7 +17,7 @@ try {
         const pathhName = path.join(PATH_COMPONENTS, widget);
         if (fs.lstatSync(pathhName).isFile()) return;
         const fullPath = path.resolve(pathhName, 'index.ts');
-        widgets[widget] = fullPath;
+        widgets[widget.toLowerCase()] = fullPath;
     });
 } catch (err) {
     throw Error('收集组件错误:\t', err);

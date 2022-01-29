@@ -1,4 +1,8 @@
+import Buttoon from './Button';
+import Input from './Input';
+
+
 export default {
-    Button: () => import(/* webpackChunkName: 'Button'*/ './Button'),
-    Input: () => import(/* webpackChunkName: 'Input'*/ './Input'),
+    Buttoon,
+    Input
 };

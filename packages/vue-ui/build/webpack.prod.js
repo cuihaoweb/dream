@@ -1,17 +1,20 @@
+const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const path = require("path");
-const { ENV, PATH_ROOT, IS_PRODUCTION, PATH_COMPONENTS } = require('./config');
-
+const { ENV, PATH_ROOT } = require('./config');
 
 module.exports = {
     mode: ENV,
     entry: require('../components/index.json'),
     output: {
         clean: true,
-        filename: '[name].js',
-        path: path.resolve(PATH_ROOT, './dist'),
-        chunkFilename: '[name].js',
-        library: 'dream-ui',
+        filename: '[name]/index.js',
+        path: path.resolve(PATH_ROOT, './lib'),
+        chunkFilename: '[name]/[name].js',
+        library: '@dream/vue-ui',
         libraryTarget: 'umd'
     },
     cache: {
@@ -19,7 +22,7 @@ module.exports = {
     },
     resolve: {
         // 扩展名
-        extensions: ['.ts', '.js', '.vue']
+        extensions: ['.ts', '.js', '.vue', '.css']
     },
     externals: {
         vue: 'vue'
@@ -51,11 +54,24 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                exclude: /node_modules/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             }
-        ],
+        ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name]/style.css'
+        })
     ],
+    optimization: {
+        minimizer: [
+            new TerserPlugin(),
+            new CssMinimizerPlugin({
+                // 开启多线程的数量
+                parallel: 7
+            })
+        ]
+    }
 };

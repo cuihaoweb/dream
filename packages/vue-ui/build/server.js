@@ -20,6 +20,6 @@ const run = async (callback) => {
 
 
 run(() => {
-    console.log(`服务运行在: ${chalk.blue('http://localhost:3001')}`);
+    console.log(`\n服务运行在: ${chalk.blue('http://localhost:3001')}\n`);
     open('http://localhost:3001');
 });

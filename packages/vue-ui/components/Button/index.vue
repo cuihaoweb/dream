@@ -18,7 +18,12 @@ const props = withDefaults(defineProps<Props>(), {
     >{{ type }}</button>
 </template>
 
-<style scoped>
+<style>
 .dr-button {
+    border: none;
+    outline: none;
+}
+.dr-button .list {
+    background: red;
 }
 </style>

@@ -70,8 +70,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./public/index.html",
         }),
-        new WebpackBar({
-            profile: true
+        new webpack.ProgressPlugin({
         })
     ],
 };

@@ -1,5 +1,5 @@
 # 第三方依赖包
-node_modules
+node_modules/
 
 
 # ide
@@ -8,3 +8,8 @@ node_modules
 
 # log
 .log
+
+
+# dist、lib
+dist/
+lib/
