@@ -42,6 +42,5 @@
         "webpack-hot-middleware": "^2.25.1",
         "webpack-merge": "^5.8.0"
     },
-    "dependencies": {
-    }
+    "dependencies": {}
 }

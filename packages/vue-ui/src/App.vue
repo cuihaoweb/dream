@@ -1,14 +1,20 @@
 <script lang="ts" setup>
-import { defineAsyncComponent, onUnmounted, ref } from 'vue';
-import Button from '../lib/button';
-import '../lib/button/style.css';
-import Input from '../lib/input';
+import Button from '../components/Button';
+import Input from '../components/Input';
+
+const onChange = (value) => {
+    console.log(value);
+}
+
+const onInput = (value) => {
+    console.log(value);
+}
 </script>
 
 <template>
     <h1>App</h1>
-    <Button type="blue"></Button>
-    <Input text="text"></Input>
+    <Button type="error" value="点击"></Button>
+    <Input type="color" @input="onInput"></Input>
 </template>
 
 

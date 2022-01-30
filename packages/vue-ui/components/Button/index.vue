@@ -1,21 +1,42 @@
 <script lang="ts" setup>
-import { computed, toRef } from '@vue/runtime-core';
-import { Type } from './type';
+import { computed, withDefaults, defineProps } from 'vue';
 
-interface Props {
-    type?: Type
+type ButtonType = 'default' | 'waring' | 'error';
+enum ButtonTheme {
+    default = 'blue',
+    waring = 'yellow',
+    error = 'red'
+}
+interface Button {
+    type?: ButtonType,
+    value: string
+}
+interface ButtonEmits {
+    (e: 'click'): void
 }
 
-const props = withDefaults(defineProps<Props>(), {
-    type: Type.default
+const props = withDefaults(defineProps<Button>(), {
+    type: 'default',
+    value: '',
 });
+
+const emits = defineEmits<ButtonEmits>();
+
+const theme = computed(() => {
+    return ButtonTheme[props.type];
+});
+
+const onClick = () => {
+    emits('click');
+}
 </script>
 
 <template>
     <button
         class="dr-button"
-        :style="{'background-color': type}"
-    >{{ type }}</button>
+        :style="{'background-color': theme}"
+        @click="onClick"
+    >{{ value }}</button>
 </template>
 
 <style>

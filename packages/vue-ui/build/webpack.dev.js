@@ -59,6 +59,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
+                exclude: /node_modules/,
                 use: ['style-loader', 'css-loader'],
             }
         ],
@@ -70,7 +71,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./public/index.html",
         }),
-        new webpack.ProgressPlugin({
-        })
-    ],
+        new webpack.ProgressPlugin()
+    ]
 };
