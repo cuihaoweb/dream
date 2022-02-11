@@ -56,6 +56,11 @@ module.exports = {
                 test: /\.css$/i,
                 exclude: /node_modules/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
+                test: /\.less$/i,
+                exclude: /node_modules/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
             }
         ]
     },
