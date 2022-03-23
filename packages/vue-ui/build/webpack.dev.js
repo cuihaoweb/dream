@@ -76,6 +76,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./public/index.html",
         }),
+        // 编译进度
         new webpack.ProgressPlugin()
     ]
 };

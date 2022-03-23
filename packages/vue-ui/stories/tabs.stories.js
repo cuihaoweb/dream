@@ -1,4 +1,5 @@
 import Tabs from '../components/Tabs';
+import TabPane from '../components/Tab-Pane';
 
 export default {
     title: 'Tabs',
@@ -6,12 +7,15 @@ export default {
 };
 
 const Template = (args) => ({
-    components: { Tabs },
+    components: { Tabs, TabPane },
     setup: () => ({ args }),
-    template: '<tabs v-bind="args" />',
+    template: `<tabs v-bind="args">
+        <tab-pane name="h">hello</tab-pane>
+        <tab-pane name="b">hello</tab-pane>
+    </tabs>`,
 });
 
 export const Example = Template.bind({});
 Example.args = {
-    options: ['首页', '个人']
+    modelValue: 'h'
 };
