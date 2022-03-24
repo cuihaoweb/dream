@@ -1,4 +1,4 @@
-import writeFile from '../lib/writeFile';
+import {writeFile} from '../lib';
 
 test('writeFile', () => {
     expect(writeFile()).toBeFalsy();

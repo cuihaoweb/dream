@@ -5,10 +5,10 @@ import cleanup from 'rollup-plugin-cleanup';
 import strip from '@rollup/plugin-strip';
 
 export default {
-    input: './src/node/writeFile.js',
+    input: './src/index.js',
     output: {
         format: 'cjs',
-        file: 'lib/writeFile.js'
+        file: 'lib/index.js'
     },
     plugins: [
         resolve(),
@@ -21,7 +21,7 @@ export default {
         cleanup({
             exclude: 'node_modules/**',
             sourcemap: false,
-            comments: "none"
+            comments: 'none'
         })
     ]
-}
+};

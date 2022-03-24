@@ -26,4 +26,4 @@ function writeFile (pathName, data) {
     }
 }
 
-export default writeFile;
+export {writeFile};

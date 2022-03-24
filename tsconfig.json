@@ -2,8 +2,6 @@
     "compilerOptions": {
         // 允许从没有设置默认导出的模块中默认导入
         "allowSyntheticDefaultImports": true,
-        // 允许编译javascript文件
-        "allowJs": true,
         // 采用的模块系统
         "sourceMap": true,
         "target": "esnext",

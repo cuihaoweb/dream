@@ -2,16 +2,22 @@ const codeStyle = require('./rules/codeStyle');
 const codeQuality = require('./rules/codeQuality');
 
 module.exports = {
-    'env': {
-        'browser': true,
-        'es2021': true,
-        'node': true
+    root: true,
+    env: {
+        jest: true,
+        browser: true,
+        es2021: true,
+        node: true
     },
-    'extends': 'eslint:recommended',
-    'parserOptions': {
-        'ecmaVersion': 'latest'
+    extends: 'eslint:recommended',
+    parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true
+        }
     },
-    'rules': {
+    rules: {
         ...codeStyle,
         ...codeQuality
     }
