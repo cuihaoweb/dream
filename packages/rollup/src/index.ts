@@ -1,11 +1,12 @@
-const path = require('path');
-import {rollup, RollupOptions, ModuleFormat} from 'rollup';
+import path from 'path';
+import {rollup, RollupOptions, ModuleFormat, OutputOptions, OutputChunk} from 'rollup';
 import {Command} from 'commander';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import strip from '@rollup/plugin-strip';
 import cleanup from 'rollup-plugin-cleanup';
 import json from '@rollup/plugin-json';
+import {writeFile} from '@dream/tools';
 
 
 class DreamRollup {
@@ -30,8 +31,7 @@ class DreamRollup {
         return require(path.resolve(this.execDir, configPath));
     }
 
-    private generateRollupConfig(): RollupOptions {
-        console.log(this.input);
+    private generateInputConfig(): RollupOptions {
         return {
             input: this.input,
             plugins: [
@@ -44,9 +44,21 @@ class DreamRollup {
         };
     }
 
-    async build() {
-        const bundle = await rollup(this.generateRollupConfig());
-        console.log(bundle);
+    private generateOutputConfig(): OutputOptions {
+        return {
+            file: this.output,
+            format: this.format
+        };
+    }
+
+    async build(): Promise<void> {
+        const bundle = await rollup(this.generateInputConfig());
+        const {output} = await bundle.generate(this.generateOutputConfig());
+        output.forEach(chunk =>  {
+            const {code, fileName} = chunk as OutputChunk;
+            console.log(fileName);
+            writeFile(this.output, code);
+        });
     }
 }
 

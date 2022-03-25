@@ -7,4 +7,4 @@ interface Output {
 export interface RollupOptions {
     inputs: string | Array<Record<string, string>>;
     output: Output;
-};
+}
