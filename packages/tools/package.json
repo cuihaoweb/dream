@@ -1,6 +1,6 @@
 {
   "name": "@dream/tools",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.0",
   "description": "工具函数",
   "main": "lib/index.js",
   "files": [
@@ -16,8 +16,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@dream/eslint-config-base": "^1.0.0",
-    "@dream/rollup": "^1.0.0",
+    "@dream/eslint-config-base": "^1.0.1-alpha.0",
+    "@dream/rollup": "^1.0.1-alpha.0",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
