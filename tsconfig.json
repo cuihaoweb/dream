@@ -1,12 +1,9 @@
 {
     "compilerOptions": {
-        // 允许从没有设置默认导出的模块中默认导入
         "allowSyntheticDefaultImports": true,
-        // 采用的模块系统
         "sourceMap": true,
         "target": "esnext",
         "module": "esnext",
-        // 这样就可以对 `this` 上的数据属性进行更严格的推断
         "strict": true,
         "jsx": "preserve",
         "moduleResolution": "node"

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "工具函数",
   "main": "lib/index.js",
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "rollup -c && jest",
