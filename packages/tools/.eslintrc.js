@@ -1,5 +1,11 @@
 module.exports = {
     extends: [
-        '@dream/base'
+        '@dream/base',
+    ],
+    overrides: [
+        {
+            files: ['*.ts'],
+            extends: ['@dream/ts']
+        }
     ]
 };
